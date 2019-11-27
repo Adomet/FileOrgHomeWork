@@ -1,0 +1,7 @@
+C:\Users\LENOVO\source\repos\HomeworkFile\HomeworkFile\bin\Debug\HomeworkFile.exe.config
+C:\Users\LENOVO\source\repos\HomeworkFile\HomeworkFile\bin\Debug\HomeworkFile.exe
+C:\Users\LENOVO\source\repos\HomeworkFile\HomeworkFile\bin\Debug\HomeworkFile.pdb
+C:\Users\LENOVO\source\repos\HomeworkFile\HomeworkFile\obj\Debug\HomeworkFile.csprojAssemblyReference.cache
+C:\Users\LENOVO\source\repos\HomeworkFile\HomeworkFile\obj\Debug\HomeworkFile.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\source\repos\HomeworkFile\HomeworkFile\obj\Debug\HomeworkFile.exe
+C:\Users\LENOVO\source\repos\HomeworkFile\HomeworkFile\obj\Debug\HomeworkFile.pdb
