@@ -21,6 +21,10 @@ namespace HomeworkFile
             numbers = new int[mod];
             links = new int[mod];
             root = mod-1;
+            for (int i = 0; i < links.Length; i++)
+            {
+                links[i] = -128;
+            }
         }
         public void insert(int number)
         {
@@ -48,16 +52,58 @@ namespace HomeworkFile
 
         public int FindLastOne (int link)
         {
-            if (links[link] == 0) 
+            if (links[link] == -128) 
             return link;
             else
             return  FindLastOne(links[link]);
+        }
+
+        public int SearchNumber(int number)
+        {
+            int i = number % mod;
+
+            int a =isNumberEQ(number, i);
+            if(a==-128)
+            {
+                Console.WriteLine(number +": Not exits");
+            }
+            else
+            {
+
+                
+            Console.WriteLine("Your Number:"+number+" is at:" + a + " Probe Cout is :"+ (GetProbeCount(number, i)));
+            }
+            return a;
+        }
+
+        public int isNumberEQ(int number,int i)
+        {
+            if (numbers[i] == number ) 
+                return i;
+            else if(links[i]== -128)
+            {
+                return -128;
+            }
+            else
+                return isNumberEQ(number, links[i]);
+        }
+        public int GetProbeCount(int number, int i)
+        {
+            int a =0;
+            int link = i;
+            if (links[link] == -128)
+                return a+1;
+            else
+                return GetProbeCount(number,links[link])+1;
         }
 
         public void DisplayContainer()
         {
             for (int i = 0; i < numbers.Length; i++)
             {
+                if(links[i]==-128)
+                    Console.Write("|" + i + "|" + numbers[i] + "|" + "??" + "|");
+                else
                 Console.Write("|" + i + "|" + numbers[i] + "|" +links[i]+"|");
                 Console.WriteLine();
             }
@@ -79,7 +125,14 @@ namespace HomeworkFile
             LContainer.insert(36);
             LContainer.insert(47);
             LContainer.insert(46);
+            LContainer.insert(55);
+            LContainer.insert(43);
+            LContainer.insert(41);
+            LContainer.insert(42);
+            LContainer.insert(666);
             LContainer.DisplayContainer();
+            LContainer.SearchNumber(46);
+            
 
             Console.ReadKey();
         }
