@@ -26,24 +26,32 @@ namespace HomeworkFile
         {
             
             int i = number % mod;
+            int lastvisited = i;
             if (numbers[i] != 0)
             {
                 while (root != -1) {
                     if (numbers[root] != 0)
                     {
-                        
-                        root -= 1;
+                    root -=1;
                     }
                     else
                     {
                         numbers[root] = number;
-                        links[i] = root;
+                        links[FindLastOne(i)] = root;
                         break;
                     }
                 }
             }
             else
                 numbers[i] = number;
+        }
+
+        public int FindLastOne (int link)
+        {
+            if (links[link] == 0) 
+            return link;
+            else
+            return  FindLastOne(links[link]);
         }
 
         public void DisplayContainer()
@@ -68,8 +76,9 @@ namespace HomeworkFile
             LContainer.insert(13);
             LContainer.insert(24);
             LContainer.insert(35);
-            LContainer.insert(25);
-            LContainer.insert(14);
+            LContainer.insert(36);
+            LContainer.insert(47);
+            LContainer.insert(46);
             LContainer.DisplayContainer();
 
             Console.ReadKey();
