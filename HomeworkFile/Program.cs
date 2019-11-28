@@ -89,12 +89,23 @@ namespace HomeworkFile
         }
         public int GetProbeCount(int number, int i)
         {
-            int a =0;
-            int link = i;
-            if (links[link] == -128)
-                return a+1;
-            else
-                return GetProbeCount(number,links[link])+1;
+            int a =i;
+            int count = 1;
+            while (links[a]!=-128)
+            {
+                if (numbers[a] == number)
+                {
+                    break;
+                }
+                else
+                {
+                    a = links[a];
+                    count++;
+                }
+                
+            }
+
+            return count;
         }
 
         public void DisplayContainer()
@@ -131,7 +142,7 @@ namespace HomeworkFile
             LContainer.insert(42);
             LContainer.insert(666);
             LContainer.DisplayContainer();
-            LContainer.SearchNumber(46);
+            LContainer.SearchNumber(666);
             
 
             Console.ReadKey();
