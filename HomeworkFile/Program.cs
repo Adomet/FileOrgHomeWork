@@ -54,6 +54,23 @@ namespace HomeworkFile
                 numbers[i] = number;
         }
 
+        public double FindAvgProbe()
+        {
+            double a = 0;
+            double c = 0;
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] != 0)
+                {
+                    a = a+ GetProbeCount(numbers[i], numbers[i]%mod);
+                    c++;
+                }
+            }
+
+            Console.WriteLine("EICH AVG Probe:" + (a / c));
+            return (a / c);
+        }
         public int FindLastOne (int link)
         {
             if (links[link] == -128) 
@@ -122,6 +139,7 @@ namespace HomeworkFile
                 Console.Write("|" + i + "|" + numbers[i] + "|" +links[i]+"|");
                 Console.WriteLine();
             }
+            FindAvgProbe();
         }
     
     
@@ -182,7 +200,23 @@ namespace HomeworkFile
                 numbers[i] = number;
         }
 
+        public double FindAvgProbe()
+        {
+            double a = 0;
+            double c = 0;
 
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] != 0)
+                {
+                    a = a + GetProbeCount(numbers[i], numbers[i] % mod);
+                    c++;
+                }
+            }
+
+            Console.WriteLine("EICH AVG Probe:" + (a / c));
+            return (a / c);
+        }
         public int SearchNumber(int number)
         {
             int i = number % mod;
@@ -243,6 +277,7 @@ namespace HomeworkFile
                     Console.Write("|" + i + "|" + numbers[i] + "|" + links[i] + "|");
                 Console.WriteLine();
             }
+            FindAvgProbe();
         }
 
 
@@ -298,7 +333,23 @@ namespace HomeworkFile
             else
                 numbers[i] = number;
         }
+        public double FindAvgProbe()
+        {
+            double a = 0;
+            double c = 0;
 
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] != 0)
+                {
+                    a += GetProbeCount(numbers[i], i);
+                    c++;
+                }
+            }
+
+            Console.WriteLine("EICH AVG Probe:" + (a / c));
+            return (a / c);
+        }
         public int FindLastOne(int link)
         {
             if (links[link] == -128)
@@ -367,7 +418,7 @@ namespace HomeworkFile
                 if (i == (numbers.Length - cellarsize)-1)
                     Console.WriteLine("|=======|");
             }
-
+            FindAvgProbe();
         }
 
 
@@ -433,7 +484,23 @@ namespace HomeworkFile
             else
                 numbers[i] = number;
         }
+        public double FindAvgProbe()
+        {
+            double a = 0;
+            double c = 0;
 
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] != 0)
+                {
+                    a = a + GetProbeCount(numbers[i], numbers[i] % mod);
+                    c++;
+                }
+            }
+
+            Console.WriteLine("EICH AVG Probe:" + (a / c));
+            return (a / c);
+        }
         public int FindLastOne(int link)
         {
             if (links[link] == -128)
@@ -459,6 +526,10 @@ namespace HomeworkFile
             }
             return a;
         }
+
+
+
+
 
         public int isNumberEQ(int number, int i)
         {
@@ -504,7 +575,7 @@ namespace HomeworkFile
                 if (i == (numbers.Length - cellarsize) - 1)
                     Console.WriteLine("|=======|");
             }
-
+            FindAvgProbe();
         }
 
 
@@ -576,7 +647,23 @@ namespace HomeworkFile
                 numbers[i] = number;
         }
 
+        public double FindAvgProbe()
+        {
+            double a = 0;
+            double c = 0;
 
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] != 0)
+                {
+                    a = a + GetProbeCount(numbers[i], numbers[i] % mod);
+                    c++;
+                }
+            }
+
+            Console.WriteLine("EICH AVG Probe:" + (a / c));
+            return (a / c);
+        }
         public int SearchNumber(int number)
         {
             int i = number % mod;
@@ -637,6 +724,7 @@ namespace HomeworkFile
                     Console.Write("|" + i + "|" + numbers[i] + "|" + links[i] + "|");
                 Console.WriteLine();
             }
+            FindAvgProbe();
         }
 
 
@@ -699,6 +787,23 @@ namespace HomeworkFile
                 numbers[i] = number;
         }
 
+        public double FindAvgProbe()
+        {
+            double a = 0;
+            double c = 0;
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] != 0)
+                {
+                    a = a + GetProbeCount(numbers[i], numbers[i] % mod);
+                    c++;
+                }
+            }
+
+            Console.WriteLine("EICH AVG Probe:" + (a / c));
+            return (a / c);
+        }
         public int FindLastOne(int link)
         {
             if (links[link] == -128)
@@ -803,6 +908,7 @@ namespace HomeworkFile
                     Console.Write("|" + i + "|" + numbers[i] + "|" + links[i] + "|");
                 Console.WriteLine();
             }
+            FindAvgProbe();
         }
 
 
@@ -811,10 +917,8 @@ namespace HomeworkFile
 
     class Program
     {
-        
-       
 
-
+        int[] numberlist;
 
         static void Main(string[] args)
         {
@@ -1155,7 +1259,6 @@ namespace HomeworkFile
         // Use for insert all of the containers
         static void insertAll(int number)
         {
-
         }
-    }
+        }
 }
