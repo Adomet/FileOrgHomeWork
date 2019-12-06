@@ -349,12 +349,12 @@ namespace HomeworkFile
             {
                 if (numbers[i] != 0)
                 {
-                    a += GetProbeCount(numbers[i], i);
+                    a = a + GetProbeCount(numbers[i], numbers[i] % mod);
                     c++;
                 }
             }
 
-            Console.WriteLine("LICH Packing factor :" + (100 * numbercount / mod) + " AVG Probe: " + (a / c));
+            Console.WriteLine("LICH Packing factor :" + (100 * numbercount / (cellarsize+mod)) + " AVG Probe: " + (a / c));
             return (a / c);
         }
         public int FindLastOne(int link)
@@ -508,7 +508,7 @@ namespace HomeworkFile
                 }
             }
 
-            Console.WriteLine("EICH Packing factor :" + (100*numbercount / mod) + " AVG Probe: " + (a / c));
+            Console.WriteLine("EICH Packing factor :" + (100*numbercount / (cellarsize+mod)) + " AVG Probe: " + (a / c));
             return (a / c);
         }
         public int FindLastOne(int link)
@@ -1007,13 +1007,15 @@ namespace HomeworkFile
             int p = a;
             p = ((p * 10) / 9);
             p = FindNextPrime(p);
+            int t = (p * 7) / 10;
+            t = FindNextPrime(t);
             int c = (p * 4) / 10;
             c = FindNextPrime(c+1);
 
             LISCHContainer  = new LISCHContainer  (p);
-            LICHContainer   =new LICHContainer    (p, c);
+            LICHContainer   =new LICHContainer    (t, c);
             EISCHContainer = new EISCHContainer   (p);
-            EICHContainer   =new EICHContainer    (p, c);
+            EICHContainer   =new EICHContainer    (t, c);
             BEISCHContainer =new BEISCHContainer  (p);
             RLISCHContainer = new RLISCHContainer (p);
 
@@ -1112,10 +1114,10 @@ namespace HomeworkFile
                     str = "LISCH";
                     break;
                 case 2:
-                    str = "EISCH";
+                    str = "LICH";
                     break;
                 case 3:
-                    str = "LICH";
+                    str = "EISCH";
                     break;
                 case 4:
                     str = "EICH";
