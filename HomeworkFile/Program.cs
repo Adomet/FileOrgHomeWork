@@ -17,9 +17,9 @@ namespace HomeworkFile
        private int[] numbers=null;
        private int[] links = null;
        private int root;
-    
+       public int numbercount = 0;
 
-       public LISCHContainer(int m_mod)
+        public LISCHContainer(int m_mod)
         {
             mod = m_mod;
             numbers = new int[mod];
@@ -32,7 +32,7 @@ namespace HomeworkFile
         }
         public void insert(int number)
         {
-            
+            numbercount++;
             int i = number % mod;
             int lastvisited = i;
             if (numbers[i] != 0)
@@ -52,6 +52,8 @@ namespace HomeworkFile
             }
             else
                 numbers[i] = number;
+
+            Console.Write("LISCH :" + GetProbeCount(number, i) + ", ");
         }
 
         public double FindAvgProbe()
@@ -68,7 +70,7 @@ namespace HomeworkFile
                 }
             }
 
-            Console.WriteLine("EICH AVG Probe:" + (a / c));
+            Console.WriteLine("LISCH Packing factor :" + (100 * numbercount / mod) + " AVG Probe: " + (a / c));
             return (a / c);
         }
         public int FindLastOne (int link)
@@ -155,6 +157,7 @@ namespace HomeworkFile
         private int[] numbers = null;
         private int[] links = null;
         private int root;
+        public int numbercount = 0;
 
 
         public EISCHContainer(int m_mod)
@@ -170,7 +173,7 @@ namespace HomeworkFile
         }
         public void insert(int number)
         {
-
+            numbercount++;
             int i = number % mod;
             int lastvisited = i;
             if (numbers[i] != 0)
@@ -198,6 +201,8 @@ namespace HomeworkFile
             }
             else
                 numbers[i] = number;
+
+            Console.Write("EISCH :" + GetProbeCount(number, i) + ", ");
         }
 
         public double FindAvgProbe()
@@ -214,7 +219,7 @@ namespace HomeworkFile
                 }
             }
 
-            Console.WriteLine("EICH AVG Probe:" + (a / c));
+            Console.WriteLine("EISCH Packing factor :" + (100 * numbercount / mod) + " AVG Probe: " + (a / c));
             return (a / c);
         }
         public int SearchNumber(int number)
@@ -294,7 +299,7 @@ namespace HomeworkFile
         private int[] numbers = null;
         private int[] links = null;
         private int root;
-
+        public int numbercount = 0;
 
         public LICHContainer(int m_mod,int m_cellarsize)
         {
@@ -311,7 +316,7 @@ namespace HomeworkFile
         }
         public void insert(int number)
         {
-
+            numbercount++;
             int i = number % mod;
             int lastvisited = i;
             if (numbers[i] != 0)
@@ -332,6 +337,8 @@ namespace HomeworkFile
             }
             else
                 numbers[i] = number;
+
+            Console.Write("LICH :" + GetProbeCount(number, i) + ", ");
         }
         public double FindAvgProbe()
         {
@@ -347,7 +354,7 @@ namespace HomeworkFile
                 }
             }
 
-            Console.WriteLine("EICH AVG Probe:" + (a / c));
+            Console.WriteLine("LICH Packing factor :" + (100 * numbercount / mod) + " AVG Probe: " + (a / c));
             return (a / c);
         }
         public int FindLastOne(int link)
@@ -438,6 +445,7 @@ namespace HomeworkFile
         private int[] numbers = null;
         private int[] links = null;
         private int root;
+        public int numbercount = 0;
 
 
         public EICHContainer(int m_mod, int m_cellarsize)
@@ -455,7 +463,7 @@ namespace HomeworkFile
         }
         public void insert(int number)
         {
-
+            numbercount++;
             int i = number % mod;
             int lastvisited = i;
             if (numbers[i] != 0)
@@ -483,6 +491,8 @@ namespace HomeworkFile
             }
             else
                 numbers[i] = number;
+
+            Console.Write("EICH :" + GetProbeCount(number, i) + ", ");
         }
         public double FindAvgProbe()
         {
@@ -498,7 +508,7 @@ namespace HomeworkFile
                 }
             }
 
-            Console.WriteLine("EICH AVG Probe:" + (a / c));
+            Console.WriteLine("EICH Packing factor :" + (100*numbercount / mod) + " AVG Probe: " + (a / c));
             return (a / c);
         }
         public int FindLastOne(int link)
@@ -592,7 +602,7 @@ namespace HomeworkFile
         private int[] links = null;
         private int root;
         private bool ContainerSwitch = false;
-
+        public int numbercount = 0;
 
         public BEISCHContainer(int m_mod)
         {
@@ -608,11 +618,14 @@ namespace HomeworkFile
         public void insert(int number)
         {
 
+            numbercount++;
             int i = number % mod;
             int root = i;
+            int a = 1;
+            int c = 0;
             if (numbers[i] != 0)
             {
-                while (root != -1 || root != mod+1 )
+                while (root != -1 && root != mod )
                 {
                     if (numbers[root] != 0)
                     {
@@ -620,12 +633,33 @@ namespace HomeworkFile
                         if (ContainerSwitch)
                         {
                             root += 1;
-                            ContainerSwitch = false;
+                            if (a == c)
+                            {
+                                ContainerSwitch = false;
+                                c = 0;
+                                a++;
+                            }
+
+                            else
+                            {
+                                c++;
+                            }
                         }
+
                         else
                         {
-                            root -= 1;
-                            ContainerSwitch = true;
+                            root += 1;
+                            if (a == c)
+                            {
+                                ContainerSwitch = true;
+                                c = 0;
+                                a++;
+                            }
+
+                            else
+                            {
+                                c++;
+                            }
                         }
                     }
                     else
@@ -645,6 +679,7 @@ namespace HomeworkFile
             }
             else
                 numbers[i] = number;
+            Console.Write("BEISCH :" + GetProbeCount(number, i) + ", ");
         }
 
         public double FindAvgProbe()
@@ -661,7 +696,7 @@ namespace HomeworkFile
                 }
             }
 
-            Console.WriteLine("EICH AVG Probe:" + (a / c));
+            Console.WriteLine("BEISCH Packing factor :" + (100 * numbercount / mod) + " AVG Probe: " + (a / c));
             return (a / c);
         }
         public int SearchNumber(int number)
@@ -744,7 +779,7 @@ namespace HomeworkFile
         private int randomturn = 0;
         private Random rd= new Random ();
         private int[] randomintarr = null;
-
+        public int numbercount = 0;
 
         public RLISCHContainer(int m_mod)
         {
@@ -762,9 +797,8 @@ namespace HomeworkFile
         }
         public void insert(int number)
         {
-
+            numbercount++;
             int i = number % mod;
-            int lastvisited = i;
             if (numbers[i] != 0)
             {
                 while (root != -1)
@@ -785,6 +819,8 @@ namespace HomeworkFile
             }
             else
                 numbers[i] = number;
+
+            Console.Write("RLISCH :" + GetProbeCount(number, i)+", ");
         }
 
         public double FindAvgProbe()
@@ -801,11 +837,11 @@ namespace HomeworkFile
                 }
             }
 
-            Console.WriteLine("EICH AVG Probe:" + (a / c));
+            Console.WriteLine("RLISCH Packing factor :" + (100 * numbercount / mod) + " AVG Probe: " + (a / c));
             return (a / c);
         }
         public int FindLastOne(int link)
-        {
+        {//gives stack overflow donno y check
             if (links[link] == -128)
                 return link;
             else
@@ -909,6 +945,7 @@ namespace HomeworkFile
                 Console.WriteLine();
             }
             FindAvgProbe();
+            Console.WriteLine();
         }
 
 
@@ -917,344 +954,207 @@ namespace HomeworkFile
 
     class Program
     {
+        static public LISCHContainer  LISCHContainer = new LISCHContainer  (11);
+        static public LICHContainer   LICHContainer = new LICHContainer    (7,4);
+        static public EISCHContainer  EISCHContainer = new EISCHContainer  (11);
+        static public EICHContainer   EICHContainer = new EICHContainer    (7,4);
+        static public BEISCHContainer BEISCHContainer = new BEISCHContainer(11);
+        static public RLISCHContainer RLISCHContainer = new RLISCHContainer(11); 
 
-        int[] numberlist;
 
         static void Main(string[] args)
         {
-            //LISCHContainer  Container = new LISCHContainer(11);
-            //LICHContainer   Container = new LICHContainer(7,4);
-            //EISCHContainer  Container = new EISCHContainer(11);
-            //EICHContainer   Container = new EICHContainer(7,4);
-            //BEISCHContainer Container = new BEISCHContainer(11);
-            //RLISCHContainer Container = new RLISCHContainer(11);
             //Container.DisplayContainer();
             //Container.SearchNumber(20);
-            bool exit = false;
-            while(!exit)
+            while (true)
             {
                 int op = 7;
-                Console.WriteLine("Which Algorithm you want to use?");
-                Console.WriteLine("1 - LISCH");
-                Console.WriteLine("2 - EISCH");
-                Console.WriteLine("3 - LICH");
-                Console.WriteLine("4 - EICH");
-                Console.WriteLine("5 - BEISCH");
-                Console.WriteLine("6 - RLISCH");
-                Console.WriteLine("7 - Exit");
+                Console.WriteLine();
+                Console.WriteLine("1 - Add Random Numbers"); // Adds Random numbers how much given by the user
+                Console.WriteLine("2 - Add User Numbers"); // Adds Number to all Algorithms ;
+                Console.WriteLine("3 - Search");// Search All
+                Console.WriteLine("4 - Show");// Show The Table,AVG probe and corrent packing factors
+                Console.WriteLine("5 - Exit");// Gueass what
                 op = int.Parse(Console.ReadLine());
-                if (op == 7 || op == 0)
-                break;
-                else
-                {
-                    switch (op)
-                    {
-                        case 1:
-                            UseLISCH();
-                            break;
-                        case 2:
-                            UseEISCH();
-                            break;
-                        case 3:
-                            UseLICH();
-                            break;
-                        case 4:
-                            UseEICH();
-                            break;
-                        case 5:
-                            UseBEISCH();
-                            break;
-                        case 6:
-                            UseRLISCH();
-                            break;
-                        default:                     
-                            exit = true;
-                            Environment.Exit(0);
-                            break;
-                            
-                 
-                    }
-                }
 
-
-            }
-
-        }
-
-        private static void UseLISCH()
-        {
-            Console.WriteLine("What is the mod of the algorithm?");
-            int mod = int.Parse(Console.ReadLine());
-            LISCHContainer Container = new LISCHContainer(mod);
-
-            int op = 0;
-            while (true)
-            {
-
-
-                Console.WriteLine("Options:");
-                Console.WriteLine("1-Add");
-                Console.WriteLine("2-Search");
-                Console.WriteLine("3-Show");
-                Console.WriteLine("4-Exit");
-                op = int.Parse(Console.ReadLine());
-                int a = 0;
                 switch (op)
                 {
                     case 1:
-                        Console.WriteLine("Add Key:");
-                         a = int.Parse(Console.ReadLine());
-                        Container.insert(a);
+                        AddRandomToAll();
                         break;
                     case 2:
-                        Console.WriteLine("Search Key:");
-                        a = int.Parse(Console.ReadLine());
-                        Container.SearchNumber(a);
+                        UserNumbersToAll();
                         break;
                     case 3:
-                        Container.DisplayContainer();
+                        SearchAll();
                         break;
                     case 4:
-                        Environment.Exit(0);
+                        ShowState();
                         break;
                     default:
+                        Environment.Exit(0);
                         break;
                 }
 
-
-
             }
-        }
 
-        private static void UseEISCH()
+
+        }
+        static public void AddRandomToAll()
         {
-            Console.WriteLine("What is the mod of the algorithm?");
-            int mod = int.Parse(Console.ReadLine());
-            EISCHContainer Container = new EISCHContainer(mod);
+            Console.WriteLine("Random Number Count:");
+            int  a = int.Parse(Console.ReadLine());
+            int p = a;
+            p = ((p * 10) / 9);
+            p = FindNextPrime(p);
+            int c = (p * 4) / 10;
+            c = FindNextPrime(c+1);
 
-            int op = 0;
-            while (true)
+            LISCHContainer  = new LISCHContainer  (p);
+            LICHContainer   =new LICHContainer    (p, c);
+            EISCHContainer = new EISCHContainer   (p);
+            EICHContainer   =new EICHContainer    (p, c);
+            BEISCHContainer =new BEISCHContainer  (p);
+            RLISCHContainer = new RLISCHContainer (p);
+
+            Random rnd = new Random();
+            for (int i = 0; i < a; i++)
             {
-
-
-                Console.WriteLine("Options:");
-                Console.WriteLine("1-Add");
-                Console.WriteLine("2-Search");
-                Console.WriteLine("3-Show");
-                Console.WriteLine("4-Exit");
-                op = int.Parse(Console.ReadLine());
-                int a = 0;
-                switch (op)
-                {
-                    case 1:
-                        Console.WriteLine("Add Key:");
-                        a = int.Parse(Console.ReadLine());
-                        Container.insert(a);
-                        break;
-                    case 2:
-                        Console.WriteLine("Search Key:");
-                        a = int.Parse(Console.ReadLine());
-                        Container.SearchNumber(a);
-                        break;
-                    case 3:
-                        Container.DisplayContainer();
-                        break;
-                    case 4:
-                        Environment.Exit(0);
-                        break;
-                    default:
-                        break;
-                }
-
-
-
+               int rndint= rnd.Next(0, a*10);
+                Console.WriteLine();
+                Console.WriteLine(rndint+" Added Probes:");
+                LISCHContainer.insert(rndint);
+                LICHContainer.insert(rndint);
+                EISCHContainer.insert(rndint);
+                EICHContainer.insert(rndint);
+                BEISCHContainer.insert(rndint);
+                RLISCHContainer.insert(rndint);
+                //Change the insert so it can expend
             }
-        }
 
-        private static void UseLICH()
+        }
+        static public void UserNumbersToAll()
         {
-            Console.WriteLine("What is the mod of the algorithm?");
-            int mod = int.Parse(Console.ReadLine());
-            Console.WriteLine("What is the size of cellar?");
-            int cellarsize = int.Parse(Console.ReadLine());
-            LICHContainer Container = new LICHContainer(mod, cellarsize);
+            Console.WriteLine("Number :");
+            int a = int.Parse(Console.ReadLine());
 
-            int op = 0;
-            while (true)
-            {
+                LISCHContainer.insert(a);
+                LICHContainer.insert(a);
+                EISCHContainer.insert(a);
+                EICHContainer.insert(a);
+                BEISCHContainer.insert(a);
+                RLISCHContainer.insert(a);
 
-
-                Console.WriteLine("Options:");
-                Console.WriteLine("1-Add");
-                Console.WriteLine("2-Search");
-                Console.WriteLine("3-Show");
-                Console.WriteLine("4-Exit");
-                op = int.Parse(Console.ReadLine());
-                int a = 0;
-                switch (op)
-                {
-                    case 1:
-                        Console.WriteLine("Add Key:");
-                        a = int.Parse(Console.ReadLine());
-                        Container.insert(a);
-                        break;
-                    case 2:
-                        Console.WriteLine("Search Key:");
-                        a = int.Parse(Console.ReadLine());
-                        Container.SearchNumber(a);
-                        break;
-                    case 3:
-                        Container.DisplayContainer();
-                        break;
-                    case 4:
-                        Environment.Exit(0);
-                        break;
-                    default:
-                        break;
-                }
-
-
-
-            }
+            
         }
 
-        private static void UseEICH()
+        static public void SearchAll()
         {
-            Console.WriteLine("What is the mod of the algorithm?");
-            int mod = int.Parse(Console.ReadLine());
-            Console.WriteLine("What is the size of cellar?");
-            int cellarsize = int.Parse(Console.ReadLine());
-            EICHContainer Container = new EICHContainer(mod, cellarsize);
+            Console.WriteLine("Number :");
+            int a = int.Parse(Console.ReadLine());
 
-            int op = 0;
-            while (true)
-            {
-
-
-                Console.WriteLine("Options:");
-                Console.WriteLine("1-Add");
-                Console.WriteLine("2-Search");
-                Console.WriteLine("3-Show");
-                Console.WriteLine("4-Exit");
-                op = int.Parse(Console.ReadLine());
-                int a = 0;
-                switch (op)
-                {
-                    case 1:
-                        Console.WriteLine("Add Key:");
-                        a = int.Parse(Console.ReadLine());
-                        Container.insert(a);
-                        break;
-                    case 2:
-                        Console.WriteLine("Search Key:");
-                        a = int.Parse(Console.ReadLine());
-                        Container.SearchNumber(a);
-                        break;
-                    case 3:
-                        Container.DisplayContainer();
-                        break;
-                    case 4:
-                        Environment.Exit(0);
-                        break;
-                    default:
-                        break;
-                }
-
-
-
-            }
+            LISCHContainer.SearchNumber(a);
+            LICHContainer.SearchNumber(a);
+            EISCHContainer.SearchNumber(a);
+            EICHContainer.SearchNumber(a);
+            BEISCHContainer.SearchNumber(a);
+            RLISCHContainer.SearchNumber(a);
         }
 
-        private static void UseBEISCH()
+        static public void ShowState()
         {
-            Console.WriteLine("What is the mod of the algorithm?");
-            int mod = int.Parse(Console.ReadLine());
-            BEISCHContainer Container = new BEISCHContainer(mod);
+            LISCHContainer .DisplayContainer();
+            LICHContainer  .DisplayContainer();
+            EISCHContainer .DisplayContainer();
+            EICHContainer  .DisplayContainer();
+            BEISCHContainer.DisplayContainer();
+            RLISCHContainer.DisplayContainer();
 
-            int op = 0;
-            while (true)
+            double conmax = double.MaxValue;
+            int a = 0;
+            if (conmax > LISCHContainer.FindAvgProbe()) 
             {
-
-
-                Console.WriteLine("Options:");
-                Console.WriteLine("1-Add");
-                Console.WriteLine("2-Search");
-                Console.WriteLine("3-Show");
-                Console.WriteLine("4-Exit");
-                op = int.Parse(Console.ReadLine());
-                int a = 0;
-                switch (op)
-                {
-                    case 1:
-                        Console.WriteLine("Add Key:");
-                        a = int.Parse(Console.ReadLine());
-                        Container.insert(a);
-                        break;
-                    case 2:
-                        Console.WriteLine("Search Key:");
-                        a = int.Parse(Console.ReadLine());
-                        Container.SearchNumber(a);
-                        break;
-                    case 3:
-                        Container.DisplayContainer();
-                        break;
-                    case 4:
-                        Environment.Exit(0);
-                        break;
-                    default:
-                        break;
-                }
-
-
-
+                conmax = LISCHContainer.FindAvgProbe();
+                a=1;
             }
+            if (conmax > LICHContainer.FindAvgProbe())
+            {
+                conmax = LICHContainer.FindAvgProbe();
+                a=2;
+            }
+            if (conmax > EISCHContainer.FindAvgProbe())
+            {
+                conmax = EISCHContainer.FindAvgProbe();
+                a=3;
+            }
+            if (conmax > EICHContainer.FindAvgProbe())
+            {
+                conmax = EICHContainer.FindAvgProbe();
+                a=4;
+            }
+            if (conmax > BEISCHContainer.FindAvgProbe())
+            {
+                conmax = BEISCHContainer.FindAvgProbe();
+                a=5;
+            }
+            if (conmax > RLISCHContainer.FindAvgProbe())
+            {
+                conmax = RLISCHContainer.FindAvgProbe();
+                a=6;
+            }
+
+            string str="";
+            switch (a)
+            {
+                case 0:
+                    break;
+                case 1:
+                    str = "LISCH";
+                    break;
+                case 2:
+                    str = "EISCH";
+                    break;
+                case 3:
+                    str = "LICH";
+                    break;
+                case 4:
+                    str = "EICH";
+                    break;
+                case 5:
+                    str = "BEISCH";
+                    break;
+                case 6:
+                    str = "RLISCH";
+                    break;
+                default:
+                    break;
+            }
+            Console.WriteLine();
+            Console.WriteLine("BEST ALgorithm is " + str + " AVG Probe:" +conmax);
         }
 
-        private static void UseRLISCH()
+        static public int FindNextPrime(int a)
         {
-            Console.WriteLine("What is the mod of the algorithm?");
-            int mod = int.Parse(Console.ReadLine());
-            RLISCHContainer Container = new RLISCHContainer(mod);
-
-            int op = 0;
-            while (true)
+            for(int i = a+1; ; i++)
             {
-
-
-                Console.WriteLine("Options:");
-                Console.WriteLine("1-Add");
-                Console.WriteLine("2-Search");
-                Console.WriteLine("3-Show");
-                Console.WriteLine("4-Exit");
-                op = int.Parse(Console.ReadLine());
-                int a = 0;
-                switch (op)
-                {
-                    case 1:
-                        Console.WriteLine("Add Key:");
-                        a = int.Parse(Console.ReadLine());
-                        Container.insert(a);
-                        break;
-                    case 2:
-                        Console.WriteLine("Search Key:");
-                        a = int.Parse(Console.ReadLine());
-                        Container.SearchNumber(a);
-                        break;
-                    case 3:
-                        Container.DisplayContainer();
-                        break;
-                    case 4:
-                        Environment.Exit(0);
-                        break;
-                    default:
-                        break;
-                }
-
-
-
+                if (IsPrime(i))
+                    return i;
             }
         }
 
+        static bool IsPrime(int a)
+        {
+            int c = 0;
+            for(int i = 2;i<Math.Sqrt(a)+1;i++)
+            {
+                if(a%i == 0)
+                {
+                    c++;
+                }
+            }
+         
+            return c==0;
+        }
 
         // Use for insert all of the containers
         static void insertAll(int number)
